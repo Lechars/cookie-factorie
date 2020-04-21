@@ -1,4 +1,20 @@
-<?php require 'inc/head.php'; ?>
+<?php require 'inc/head.php';?>
+<?php if (isset($_POST) && !empty($_POST['loginname']))
+        {   
+            $_SESSION['name'] = $_POST['loginname'];
+
+            $_SESSION['Pecan nuts'] = 0;
+
+            $_SESSION['Chocolate chips'] = 0;
+
+            $_SESSION['Full chocolate cookie'] = 0;
+
+            $_SESSION['M&M\'s&copy; cookies'] = 0;
+            
+            header('Location:/index.php');
+                        
+
+    }?>
 <div class="container" style="margin-top:40px">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -34,6 +50,7 @@
                             </div>
                         </fieldset>
                     </form>
+                 
                 </div>
                 <div class="panel-footer ">
                     Don't have an account ? <a href="#" onClick="">Too bad !</a>
@@ -42,4 +59,4 @@
         </div>
     </div>
 </div>
-<?php require 'inc/foot.php'; ?>
+<?php require 'inc/foot.php';?>

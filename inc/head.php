@@ -13,6 +13,7 @@
 </head>
 <body>
 <header>
+    <?php session_start() ?>
     <!-- MENU ENTETE -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -38,16 +39,37 @@
                     <li><a href="#">Nuts</a></li>
                     <li><a href="#">Gluten full</a></li>
                     <li>
-                        <a href="/cart.php" class="btn btn-warning navbar-btn">
+                        <?php if (isset($_SESSION['name']))
+                        {
+                           echo '<a href="/cart.php" class="btn btn-warning navbar-btn">';
+                        }else
+                        {
+                            echo '<a href="/login.php" class="btn btn-warning navbar-btn">';
+                        }
+                        ?>
                             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                             Cart
                         </a>
                     </li>
+                    <?php 
+                        if(isset($_SESSION['name']))
+                        {
+                            echo '<li><a href="/logout.php" class="btn btn-primary">';
+                            echo '<span btn btn-lg btn-primary btn-block" aria-hidden="true"></span>Logout</a></li>';
+                            
+                        }
+
+
+                    ?>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+
     <div class="container-fluid text-right">
-        <strong>Hello Wilder !</strong>
+        <?php if (isset($_SESSION['name']))
+        { 
+           echo "<strong>Hello " . $_SESSION['name'] . "!</strong>";
+        }else echo "<strong>Hello wilder!</strong>";?>
     </div>
 </header>
